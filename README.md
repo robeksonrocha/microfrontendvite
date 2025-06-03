@@ -1,68 +1,68 @@
 # Microfrontend com Vite e Module Federation
 
-Este projeto é uma implementação de microfrontend utilizando Vite e Module Federation, consistindo em três módulos:
-
-- **App Shell**: Aplicação principal que gerencia a navegação e o estado global
-- **Cargo**: Módulo para gerenciamento de cargos
-- **Desligamento**: Módulo para processo de desligamento
-
-## Tecnologias Utilizadas
-
-- React
-- Vite
-- Module Federation
-- Zustand (Gerenciamento de Estado)
+Este projeto é uma aplicação de microfrontend utilizando Vite e Module Federation, composta por quatro módulos principais:
 
 ## Estrutura do Projeto
 
-```
-microfrontend-vite/
-├── app-shell/         # Aplicação principal
-├── cargo/            # Módulo de cargos
-└── desligamento/     # Módulo de desligamento
-```
+- **app-shell (porta 3000)**: Módulo principal com login, navegação e dashboard
+- **cargo (porta 4174)**: Módulo de gerenciamento de cargos
+- **desligamento (porta 4173)**: Módulo de processo de desligamento
+- **classes (porta 4175)**: Módulo de gestão de classes salariais
 
-## Portas Utilizadas
+## Implementações Principais
 
-- App Shell: 3000
-- Cargo: 4174
-- Desligamento: 4173
+- Sistema de login com autenticação simulada
+- Navegação lateral entre módulos
+- Compartilhamento de estado usando Zustand
+- Interface moderna com cores (#2c3e50, #34495e)
+- Dashboard com métricas e cards
+- Módulo de Classes com visualização de classes salariais em cards
+
+## Configurações Técnicas
+
+- Module Federation para compartilhamento de componentes
+- Configuração de portas específicas para cada módulo
+- Exposição do useGlobalStore pelo app-shell
+- Importação do estado global pelos módulos filhos
+- CORS configurado para comunicação entre módulos
+
+## Módulo de Classes
+
+- Criação do projeto usando Vite
+- Configuração do Module Federation
+- Implementação do componente ClassesApp
+- Integração com o menu lateral
+- Visualização de classes salariais (A, B, C, D) com níveis e salários base
+
+## Credenciais e Acesso
+
+- Login aceita qualquer email/senha não vazios
+- Usuário identificado como "João Silva"
+- Perfil configurado como administrador
 
 ## Como Executar
 
-1. Instale as dependências em cada módulo:
+Para executar o projeto, siga os passos abaixo para cada módulo:
 
+1. Instale as dependências:
 ```bash
-cd app-shell && npm install
-cd ../cargo && npm install
-cd ../desligamento && npm install
+cd [nome-do-modulo]
+npm install
 ```
 
-2. Execute o build e inicie cada módulo:
-
+2. Execute o módulo em modo de desenvolvimento:
 ```bash
-# Em terminais separados
-cd app-shell && npm run rebuild-preview
-cd cargo && npm run rebuild-preview
-cd desligamento && npm run rebuild-preview
+npm run dev
 ```
 
-3. Acesse a aplicação em `http://localhost:3000`
-
-## Desenvolvimento
-
-Para desenvolvimento, você pode usar o modo de desenvolvimento do Vite:
-
+Ou para build e preview:
 ```bash
-# Em terminais separados
-cd app-shell && npm run dev
-cd cargo && npm run dev
-cd desligamento && npm run dev
+npm run rebuild-preview
 ```
 
-## Funcionalidades
+## Portas dos Serviços
 
-- Navegação entre módulos via sidebar
-- Compartilhamento de estado usando Zustand
-- Interface moderna com transições suaves
-- Feedback visual do módulo ativo 
+- App Shell: http://localhost:3000
+- Módulo de Cargos: http://localhost:4174
+- Módulo de Desligamento: http://localhost:4173
+- Módulo de Classes: http://localhost:4175 

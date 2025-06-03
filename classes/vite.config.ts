@@ -1,4 +1,3 @@
-// app-shell/vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import federation from '@originjs/vite-plugin-federation';
@@ -7,22 +6,17 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: 'app_shell',
+      name: 'classes',
       filename: 'remoteEntry.js',
-      exposes: {
-        './useGlobalStore': './src/store/useGlobalStore.ts'
-      },
       remotes: {
-        cargo: 'http://localhost:4174/assets/remoteEntry.js',
-        desligamento: 'http://localhost:4173/assets/remoteEntry.js',
-        classes: 'http://localhost:4175/assets/remoteEntry.js'
+        app_shell: 'http://localhost:3000/assets/remoteEntry.js'
+      },
+      exposes: {
+        './ClassesApp': './src/ClassesApp.tsx'
       },
       shared: ['react', 'react-dom', 'zustand']
     })
   ],
-  server: {
-    port: 3000
-  },
   build: {
     target: 'esnext',
     minify: false,
@@ -38,10 +32,10 @@ export default defineConfig({
     }
   },
   preview: {
-    port: 3000,
+    port: 4175,
     strictPort: true,
     headers: {
       "Access-Control-Allow-Origin": "*"
     }
   }
-});
+}); 

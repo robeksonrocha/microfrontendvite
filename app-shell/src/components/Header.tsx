@@ -2,44 +2,46 @@ import React from 'react';
 import { useGlobalStore } from '../store/useGlobalStore';
 
 const Header: React.FC = () => {
-  const { user, clearUser } = useGlobalStore();
+  const { user } = useGlobalStore();
 
   return (
     <header style={{
-      backgroundColor: '#2c3e50',
+      backgroundColor: '#1a56db',
       color: 'white',
-      padding: '1rem',
+      padding: '0.75rem 1.5rem',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
       boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
     }}>
-      <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
-        Microfrontend App
+      <div style={{ 
+        fontSize: '1.25rem', 
+        fontWeight: 'bold',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem'
+      }}>
+        <span style={{ fontSize: '1.5rem' }}>⚡</span>
+        Sistema Corporativo
       </div>
       <div style={{ 
         display: 'flex', 
         alignItems: 'center',
-        gap: '1rem'
+        gap: '0.75rem'
       }}>
-        <div>
-          <span style={{ marginRight: '0.5rem' }}>👤</span>
-          {user?.name}
+        <span>Bem-vindo, {user?.name || 'Usuário'}</span>
+        <div style={{
+          width: '32px',
+          height: '32px',
+          backgroundColor: '#3b82f6',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '1.25rem'
+        }}>
+          U
         </div>
-        <button
-          onClick={clearUser}
-          style={{
-            backgroundColor: '#e74c3c',
-            color: 'white',
-            border: 'none',
-            padding: '0.5rem 1rem',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s'
-          }}
-        >
-          Sair
-        </button>
       </div>
     </header>
   );

@@ -1,16 +1,21 @@
 import React from 'react';
 
-const Footer = () => (
-  <footer
-    style={{
-      backgroundColor: '#282c34',
-      color: 'white',
+const Footer: React.FC = () => {
+  return (
+    <footer style={{
+      borderTop: '1px solid #e5e7eb',
       padding: '1rem',
       textAlign: 'center',
-    }}
-  >
-    <small>© 2025 Microfrontend Project</small>
-  </footer>
-);
+      color: '#6b7280',
+      fontSize: '0.875rem',
+      backgroundColor: 'white'
+    }}>
+      <div>© 2024 Sistema Corporativo. Todos os direitos reservados.</div>
+      <div style={{ marginTop: '0.5rem' }}>
+        Versão 1.0.0 | Suporte: suporte@empresa.com
+      </div>
+    </footer>
+  );
+};
 
-export default Footer;
+export default Footer; 
